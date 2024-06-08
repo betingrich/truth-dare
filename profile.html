@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Create Your Profile</h1>
+        <form id="profileForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="file" id="profilePicture" accept="image/*">
+            <button type="submit">Continue</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const profilePicture = document.getElementById('profilePicture').files[0];
+            localStorage.setItem('username', username);
+            localStorage.setItem('profilePicture', profilePicture ? URL.createObjectURL(profilePicture) : '');
+            window.location.href = 'question.html';
+        });
+    </script>
+</body>
+</html>
+

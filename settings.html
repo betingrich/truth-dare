@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Settings</h1>
+        <button onclick="adjustUsername()">Adjust Username <i class="fas fa-user-edit"></i></button>
+        <button onclick="changeProfilePicture()">Change Profile Picture <i class="fas fa-image"></i></button>
+        <button onclick="window.location.href='about.html'">About the Designer <i class="fas fa-info-circle"></i></button>
+        <button onclick="window.location.href='index.html'">Logout <i class="fas fa-sign-out-alt"></i></button>
+    </div>
+    <script>
+        function adjustUsername() {
+            const newUsername = prompt('Enter new username:');
+            if (newUsername) {
+                localStorage.setItem('username', newUsername);
+                alert('Username updated!');
+            }
+        }
+
+        function changeProfilePicture() {
+            alert('Profile picture change feature coming soon.');
+        }
+    </script>
+</body>
+</html>
+
+
+

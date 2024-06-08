@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGL Clone - Question</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Choose a Game</h1>
+        <div class="game">
+            <h2>Ask me anonymously</h2>
+            <i class="fas fa-dice" onclick="generateRandomQuestion('anonymous')"></i>
+            <button onclick="generateLink('anonymous')">Generate Link <i class="fas fa-link"></i></button>
+        </div>
+        <div class="game">
+            <h2>Dare me</h2>
+            <i class="fas fa-dice" onclick="generateRandomQuestion('dare')"></i>
+            <button onclick="generateLink('dare')">Generate Link <i class="fas fa-link"></i></button>
+        </div>
+        <div class="game">
+            <h2>Truth or Dare</h2>
+            <i class="fas fa-dice" onclick="generateRandomQuestion('truthordare')"></i>
+            <button onclick="generateLink('truthordare')">Generate Link <i class="fas fa-link"></i></button>
+        </div>
+        <div class="game">
+            <h2>Never have I</h2>
+            <i class="fas fa-dice" onclick="generateRandomQuestion('neverhavei')"></i>
+            <button onclick="generateLink('neverhavei')">Generate Link <i class="fas fa-link"></i></button>
+        </div>
+        <div class="game">
+            <h2>Confession</h2>
+            <i class="fas fa-dice" onclick="generateRandomQuestion('confession')"></i>
+            <button onclick="generateLink('confession')">Generate Link <i class="fas fa-link"></i></button>
+        </div>
+        <div class="game">
+            <h2>Puzzle</h2>
+            <i class="fas fa-dice" onclick="generateRandomQuestion('puzzle')"></i>
+            <button onclick="generateLink('puzzle')">Generate Link <i class="fas fa-link"></i></button>
+        </div>
+        <div class="game">
+            <h2>Blind date me</h2>
+            <i class="fas fa-dice" onclick="generateRandomQuestion('blinddate')"></i>
+            <button onclick="generateLink('blinddate')">Generate Link <i class="fas fa-link"></i></button>
+        </div>
+        <button onclick="window.location.href='social.html'">Choose Social Media <i class="fas fa-share-alt"></i></button>
+        <button onclick="window.location.href='settings.html'">Settings <i class="fas fa-cog"></i></button>
+        <button onclick="window.location.href='inbox.html'">Inbox <i class="fas fa-inbox"></i></button>
+    </div>
+    <script>
+        function generateLink(game) {
+            const username = localStorage.getItem('username');
+            if (!username) {
+                alert('Please create your profile first.');
+                return;
+            }
+            const link = `http://localhost:5500/answer.html?user=${username}&game=${game}`;
+            prompt('Copy this link and share it:', link);
+        }
+
+        function generateRandomQuestion(game) {
+            alert('Random question for ' + game);
+        }
+    </script>
+</body>
+</html>
+
+
+
