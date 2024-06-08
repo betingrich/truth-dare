@@ -1,28 +1,29 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const cors = require('cors');
 
 const app = express();
-const port = 3000;
+const PORT = 5500;
 
 app.use(bodyParser.json());
+app.use(cors());
 
-app.post('/sendMessage', (req, res) => {
-    const { user, message } = req.body;
-    const messages = JSON.parse(fs.readFileSync('messages.json', 'utf8'));
-    messages.push({ user, message });
+app.post('/api/messages', (req, res) => {
+    const { user, game, answer } = req.body;
+
+    if (!user || !game || !answer) {
+        return res.status(400).json({ error: 'Invalid request' });
+    }
+
+    const messages = JSON.parse(fs.readFileSync('messages.json', 'utf-8'));
+    messages.push({ user, game, answer });
+
     fs.writeFileSync('messages.json', JSON.stringify(messages, null, 2));
-    res.json({ success: true });
+
+    res.status(201).json({ message: 'Message received' });
 });
 
-app.get('/messages', (req, res) => {
-    const messages = JSON.parse(fs.readFileSync('messages.json', 'utf8'));
-    res.json(messages);
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
-
-app.use(express.static('../frontend'));
-
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-});
-
