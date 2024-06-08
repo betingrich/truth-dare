@@ -25,5 +25,5 @@ app.post('/api/messages', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on http://github.com/betingrich/truth/:${PORT}`);
 });
