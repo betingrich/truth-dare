@@ -40,7 +40,9 @@
                     alert('Question sent successfully!');
                     window.location.href = 'index.html';
                 } else {
-                    alert('Failed to send question.');
+                    response.json().then(data => {
+                        alert('Error: ' + data.error);
+                    });
                 }
             }).catch(error => {
                 alert('Error:', error);
@@ -49,5 +51,3 @@
     </script>
 </body>
 </html>
-
-
